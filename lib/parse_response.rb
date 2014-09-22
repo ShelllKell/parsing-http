@@ -17,7 +17,7 @@ class HTTPResponseParser
   end
 
   def header
-    header = @file.split("\n")[1..7].map { |line| [line.split(": ")[0] + ":", line.split(": ")[1]] }
+    header = @file.split("\n\n")[0].split(/\n/)[1..-1].map { |line| [line.split(": ")[0] + ":", line.split(": ")[1]] }
     Hash[header]
   end
 
